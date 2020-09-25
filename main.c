@@ -1,4 +1,4 @@
-
+п»ї
 #include <stdio.h>
 #include <string.h>
 #include <conio.h>
@@ -142,7 +142,7 @@ int main()
 			Avail = 0;
 			CurrentDir = snakeDir;
 
-			/* рамки*/
+			/* СЂР°РјРєРё*/
 			for (i = 0; i < arraySizeX * arraySizeY; i++)
 			{
 
@@ -153,7 +153,7 @@ int main()
 				else arr[i] = ' ';
 			}
 
-			/* еда , но чтобы не на змее  */
+			/* РµРґР° , РЅРѕ С‡С‚РѕР±С‹ РЅРµ РЅР° Р·РјРµРµ  */
 			if (newFood)
 			{
 				CheckFoodCoord = 0;
@@ -174,19 +174,19 @@ int main()
 				newFood = 0;
 			}
 
-			/* проветка на еду , стены  */
+			/* РїСЂРѕРІРµС‚РєР° РЅР° РµРґСѓ , СЃС‚РµРЅС‹  */
 			for (i = 0; i < snakeSize; i++)
 			{
 				/* food check */
 				if ((snakePos[2 * i] == foodPos[0]) && (snakePos[2 * i + 1] == foodPos[1]))
 				{
 					newFood = 1;
-					/* есть еда. змея длиннее  */
+					/* РµСЃС‚СЊ РµРґР°. Р·РјРµСЏ РґР»РёРЅРЅРµРµ  */
 					if (snakeSize < 50) snakeSize++;
 					Avail = 1;
 					
 				}
-				/* стена не стена  */
+				/* СЃС‚РµРЅР° РЅРµ СЃС‚РµРЅР°  */
 				if (!Avail)
 				{
 					if ((arr[snakePos[2 * snakeSize - 1] * arraySizeX + snakePos[2 * snakeSize - 2]] == '-') || (arr[snakePos[2 * snakeSize - 1] * arraySizeX + snakePos[2 * snakeSize - 2]] == '|'))
@@ -201,7 +201,7 @@ int main()
 						Dead = 1;
 					}
 				}
-				/* а вдруг себя съела */
+				/* Р° РІРґСЂСѓРі СЃРµР±СЏ СЃСЉРµР»Р° */
 				if (i != (snakeSize - 1))
 				{
 					if ((snakePos[2 * (snakeSize - 1)] == snakePos[2 * i]) && (snakePos[2 * (snakeSize - 1) + 1] == snakePos[2 * i + 1]))
@@ -212,7 +212,7 @@ int main()
 				}
 			}
 
-			/* подвинуть змею */
+			/* РїРѕРґРІРёРЅСѓС‚СЊ Р·РјРµСЋ */
 			if (Avail)
 			{
 				for (i = snakeSize; i > 1; i--)
@@ -237,19 +237,19 @@ int main()
 			if (snakeDir == 3) { snakePos[2 * snakeSize - 2] = snakePos[2 * snakeSize - 4] - 1; snakePos[2 * snakeSize - 1] = snakePos[2 * snakeSize - 3]; } // move left
 			if (snakeDir == 4) { snakePos[2 * snakeSize - 2] = snakePos[2 * snakeSize - 4];	   snakePos[2 * snakeSize - 1] = snakePos[2 * snakeSize - 3] + 1; } // move down
 
-			/* тело змейки */
+			/* С‚РµР»Рѕ Р·РјРµР№РєРё */
 			for (i = 0; i < snakeSize; i++)
 			{
 				arr[snakePos[2 * i + 1] * arraySizeX + snakePos[2 * i]] = '#';
 			}
 
-			/* место еды */
+			/* РјРµСЃС‚Рѕ РµРґС‹ */
 			arr[foodPos[1] * arraySizeX + foodPos[0]] = '+';
 			//system("cls");
 			pos.X = 0;
 			pos.Y = 0;
 			SetConsoleCursorPosition(output, pos);
-			/* печать*/
+			/* РїРµС‡Р°С‚СЊ*/
 			for (i = 0; i < arraySizeX; i++)
 			{
 				for (j = 0; j < arraySizeY; j++)
@@ -259,7 +259,6 @@ int main()
 				printf("\n");
 			}
 
-			/* if condition Dead is satisfied -> break */
 			Key = 0;
 			if (Dead) break;
 			Sleep(1000 / Speed);
@@ -289,7 +288,7 @@ int main()
 	
 			if (snakeDir != CurrentDir)
 			{
-				/* if the current direction is left -> we cannot choose right ...*/
+				
 				if (snakeDir == 2 && CurrentDir == 4) snakeDir = 4;
 				if (snakeDir == 1 && CurrentDir == 3) snakeDir = 3;
 				if (snakeDir == 4 && CurrentDir == 2) snakeDir = 2;
